@@ -1,6 +1,6 @@
 # Lab2QRCode
 
-**Lab2QRCode** 是一款 Windows 平台下的工具，支持将**任意二进制或文本文件**转换为多种**条码图片**，以及将**条码图片**解码回原始文件。
+**Lab2QRCode** 是一款支持 Windows、Linux 平台的工具，支持将**任意二进制或文本文件**转换为多种**条码图片**，以及将**条码图片**解码回原始文件。
 
 ![demo1](./images/demo1.png)
 
@@ -14,18 +14,19 @@
 
 ## 构建
 
-使用 `cmake` 管理项目，依赖项：
+使用 `cmake` 管理项目，依赖三方库：
 
+- **`Qt5`** - 图形界面
 - [**`zxing-cpp`**](https://github.com/zxing-cpp/zxing-cpp) - 条码处理核心库
 - [**`OpenCV4`**](https://github.com/opencv/opencv) - 图像处理
-- **`Qt5`** - 图形界面
+- [**`Boost.Asio`**](https://www.boost.org/doc/libs/master/doc/html/boost_asio.html) - 网络通信
+- [**`spdlog`**](https://github.com/gabime/spdlog) - 日志
 - [**`nlohmann_json`**](https://github.com/nlohmann/json) - JSON 数据处理
 - [**`mqtt5`**](https://github.com/boostorg/mqtt5) - 消息订阅
-- [**`Boost.Asio`**](https://www.boost.org/doc/libs/master/doc/html/boost_asio.html)
 
-使用 Visual Studio 17 或 gcc 工具链构建：
+使用 Visual Studio 17 或 gcc 工具链构建。
 
-项目依赖 [`pwsh`](https://github.com/PowerShell/PowerShell/releases/tag/v7.5.4) 终端。
+项目还依赖 [`pwsh`](https://github.com/PowerShell/PowerShell/releases/tag/v7.5.4) 终端。
 
 ```shell
 # windows 安装
