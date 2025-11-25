@@ -201,7 +201,7 @@ BarcodeWidget::BarcodeWidget(QWidget* parent) : QWidget(parent) {
     fileDialog = new QFileDialog(this, "Select File", "", "Supported Files (*.rfa *.txt *.png);;All Files (*)");
     fileDialog->setModal(false);
 
-    MqttConfig config = MqttSubscriber::load_config("./setting/config.json");
+    MqttConfig config = MqttSubscriber::loadMqttConfig("./setting/config.json");
 
     subscriber_       = std::make_unique<MqttSubscriber>(
         config.host, config.port, config.client_id, [this](const std::string& topic, const std::string& payload) {
