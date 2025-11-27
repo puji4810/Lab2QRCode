@@ -27,7 +27,7 @@ if(MSVC)
     add_compile_options(/EHsc /utf-8 /bigobj)
 endif()
 
-find_package(Qt5 REQUIRED COMPONENTS Core Widgets Concurrent)
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets Concurrent multimedia multimediawidgets)
 find_package(Threads REQUIRED)
 find_package(ZXing REQUIRED)
 find_package(OpenCV REQUIRED)
@@ -42,6 +42,7 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(${PROJECT_NAME} 
     WIN32 
     ${SOURCES}
+    "src/CameraWidget.cpp"
     ${VERSION_CPP}
     "logo.rc"
 )
@@ -52,6 +53,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt5::Core
     Qt5::Widgets
     Qt5::Concurrent
+    Qt5::Multimedia
+    Qt5::MultimediaWidgets
     ZXing::ZXing
     ${OpenCV_LIBS}
     Boost::headers

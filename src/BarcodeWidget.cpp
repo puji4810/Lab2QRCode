@@ -148,6 +148,9 @@ BarcodeWidget::BarcodeWidget(QWidget* parent) : QWidget(parent) {
     // 连接菜单项的点击信号
     connect(aboutAction, &QAction::triggered, this, &BarcodeWidget::showAbout);
     connect(debugMqttAction, &QAction::triggered, this, &BarcodeWidget::showMqttDebugMonitor);
+    connect(openCameraScanAction, &QAction::triggered, this,[this] {
+        preview.show();
+    });
 
     auto* mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(15); // 调整控件之间的间距

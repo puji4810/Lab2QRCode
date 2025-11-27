@@ -10,6 +10,7 @@
 #include "convert.h"
 #include "mqtt/mqtt_client.h"
 #include "mqtt/MQTTMessageWidget.h"
+#include "CameraWidget.h"
 
 class QLineEdit;
 class QPushButton;
@@ -150,5 +151,6 @@ private:
     QFileDialog* fileDialog;                                                  /**< 文件选择对话框 */
     std::unique_ptr<MqttSubscriber> subscriber_;                              /**< MQTT订阅者实例 */
     std::unique_ptr<MQTTMessageWidget> messageWidget;                         /**< MQTT消息展示窗口 */
+    CameraWidget preview;                                                    /**< 摄像头预览窗口 */
 
 };
