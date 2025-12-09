@@ -443,6 +443,10 @@ void CameraWidget::updateFrame(const FrameResult& r) const
         QList<QStandardItem*> rowItems;
         rowItems << new QStandardItem(QDateTime::currentDateTime().toString("hh:mm:ss"));
         QStandardItem* imageItem = new QStandardItem();
+        if (r.rectifiedImage.empty()) {
+            // If the rectified image is empty, skip adding this result
+            return;
+        }
         QImage img = QImage((const uchar*)r.rectifiedImage.data, r.rectifiedImage.cols, r.rectifiedImage.rows, r.rectifiedImage.step, QImage::Format_RGB888).rgbSwapped();
         QPixmap pixmap = QPixmap::fromImage(img).scaled(128, 128, Qt::KeepAspectRatio, Qt::SmoothTransformation);
         imageItem->setData(pixmap, Qt::DecorationRole);
@@ -489,7 +493,6 @@ void CameraWidget::exportResultsToHtml(const QString& filePath)
     html += "ion>扫描结果<thead><tr><th>时间<th>图像<th>类型<th>内容<tbody>";
 
     for (int r = 0; r < resultModel->rowCount(); r++) {
-        const int row = r + 1;
         const auto getText = [&](int c) -> QString {
             QStandardItem* it = resultModel->item(r, c);
             QString text = it ? it->text() : QString("");
