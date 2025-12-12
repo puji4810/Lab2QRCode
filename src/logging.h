@@ -1,4 +1,4 @@
-#include <QCoreApplication>
+#pragma once
 #include <filesystem>
 #include <spdlog/sinks/daily_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -7,11 +7,11 @@
 namespace Logging {
 
 /**
-     * @brief 初始化日志系统
-     *
-     * 配置 spdlog，使用文件和控制台两个输出通道。
-     * 日志文件按天滚动保存，控制台输出带颜色。
-     */
+ * @brief 初始化日志系统
+ *
+ * 配置 spdlog，使用文件和控制台两个输出通道。
+ * 日志文件按天滚动保存，控制台输出带颜色。
+ */
 inline void setupLogging() {
     if (std::filesystem::exists("Log")) {
         std::filesystem::create_directory("Log");

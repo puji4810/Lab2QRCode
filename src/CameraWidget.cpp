@@ -1,4 +1,5 @@
 #include "CameraWidget.h"
+#include "sysinfo.h"
 #include <QBuffer>
 #include <QCameraInfo>
 #include <QComboBox>
@@ -20,13 +21,14 @@
 #include <QToolButton>
 #include <QWidgetAction>
 #include <ZXing/ReadBarcode.h>
+#include <filesystem>
 #include <magic_enum/magic_enum_format.hpp>
 #include <qaction.h>
 #include <qcoreevent.h>
 #include <spdlog/spdlog.h>
 #include <xlsxwriter.h>
 
-static const auto HISTOGRAM_CLIP_THRESHOLD = 0.1;
+static constexpr auto HISTOGRAM_CLIP_THRESHOLD = 0.1;
 
 static const std::vector<std::pair<ZXing::BarcodeFormat, QString>> kBarcodeFormatList{
     {ZXing::BarcodeFormat::Aztec,           "Aztec"          },
@@ -487,7 +489,7 @@ void CameraWidget::startCamera(int camIndex) {
                      config.fps,
                      config.pixelFormat.toStdString());
         //勾选对应的配置，在主线程操作 UI
-        QMetaObject::invokeMethod(this, [this, config]() { selectBestCameraConfigUI(config); }, Qt::QueuedConnection);
+        QMetaObject::invokeMethod(this, [this, config] { selectBestCameraConfigUI(config); }, Qt::QueuedConnection);
         cap->set(cv::CAP_PROP_FRAME_WIDTH, config.width);
         cap->set(cv::CAP_PROP_FRAME_HEIGHT, config.height);
         cap->set(cv::CAP_PROP_FPS, config.fps);
@@ -549,6 +551,16 @@ void CameraWidget::updateFrame(const FrameResult &r) const {
             barcodeClearTimer->start(3000);
             return;
         }
+        // 识别到条码，直接保存整个视频帧用于调试
+
+        if (!std::filesystem::exists("debug_frames")) {
+            std::filesystem::create_directory("debug_frames");
+        }
+        const std::string filename = std::format(
+            "./debug_frames/scan_{}_{}.png", r.type.toStdString(), sysinfo::getCurrentTimeString("%Y-%m-%d_%H-%M-%S"));
+        spdlog::info(
+            "识别到条码: Type = {}, Content = {} 保存到: {}", r.type.toStdString(), r.content.toStdString(), filename);
+        cv::imwrite(filename, r.frame);
 
         // 更新上一次的记录
         lastContent = r.content;

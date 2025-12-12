@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <iomanip>
 #include <thread>
 
 #ifdef _WIN32
@@ -14,6 +15,12 @@
 #if defined(__APPLE__) && defined(__MACH__)
     #include <sys/sysctl.h>
 #endif
+
+#undef max
+#undef min
+
+#include <chrono>
+#include <sstream>
 
 namespace sysinfo {
 
@@ -88,4 +95,19 @@ inline unsigned int getCPUCoreCount() {
     const unsigned int cores = std::thread::hardware_concurrency();
     return cores;
 }
+
+inline std::string getCurrentTimeString(const std::string &time_format) {
+    // 获取当前系统时间点
+    const auto now = std::chrono::system_clock::now();
+    // 转换为 time_t (C风格时间)
+    const std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
+    // 转换为本地时间的 tm 结构
+    const std::tm local_tm = *std::localtime(&now_time_t);
+
+    // 使用 stringstream 进行格式化
+    std::stringstream ss;
+    ss << std::put_time(&local_tm, time_format.c_str());
+    return ss.str();
+}
+
 } // namespace sysinfo
