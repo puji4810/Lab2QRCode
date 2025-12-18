@@ -427,6 +427,8 @@ CameraWidget::CameraWidget(QWidget *parent)
             }
         });
     }
+
+    initBeep();
 }
 
 bool CameraWidget::eventFilter(QObject *obj, QEvent *event) {
