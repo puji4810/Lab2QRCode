@@ -174,8 +174,7 @@ jobs:
           '@ | Out-File -FilePath $opencvConfig -Encoding UTF8
 
           # 构建 zxing-cpp
-          git clone --depth 1 https://github.com/zxing-cpp/zxing-cpp.git `
-            ../zxing-cpp --recurse -b v2.3.0
+          git clone --depth 1 https://github.com/zxing-cpp/zxing-cpp.git ../zxing-cpp --recurse-submodules -b v2.3.0
 
           cmake -S ../zxing-cpp -B ../zxing-cpp/build -G Ninja -DCMAKE_BUILD_TYPE=Release
           cmake --build ../zxing-cpp/build --config Release
@@ -297,7 +296,7 @@ jobs:
       # ---- Build ZXing (Linux) ----
       - name: Build zxing-cpp
         run: |
-          git clone https://github.com/zxing-cpp/zxing-cpp.git --depth 1
+          git clone --depth 1 -b v2.3.0 https://github.com/zxing-cpp/zxing-cpp.git
           cmake -S zxing-cpp -B zxing-cpp/build -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
             -DBUILD_SHARED_LIBS=OFF
