@@ -8,5 +8,11 @@
         "font_file": "",
         "font_family": "",
         "bold": false
+    },
+    "image_size": {
+        "unit": "pixel",
+        "ppi": 300,
+        "width": 300.0,
+        "height": 300.0
     }
 }

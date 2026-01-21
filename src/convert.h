@@ -102,6 +102,30 @@ struct QRcode_create_config {
     return image;
 }
 
+/**
+ * @brief 将QImage缩放到精确的目标尺寸
+ * @param image 原始图像
+ * @param targetWidth 目标宽度（像素）
+ * @param targetHeight 目标高度（像素）
+ * @return 缩放后的图像
+ *
+ * @details 使用平滑缩放算法确保输出图像的尺寸精确匹配目标尺寸。
+ *          这解决了zxing-cpp生成的图像可能不符合指定尺寸的问题。
+ */
+[[nodiscard]] inline QImage resizeImageToExactSize(const QImage &image, int targetWidth, int targetHeight) {
+    if (image.isNull()) {
+        return image;
+    }
+
+    // 如果图像已经是目标尺寸，直接返回
+    if (image.width() == targetWidth && image.height() == targetHeight) {
+        return image;
+    }
+
+    // 使用平滑缩放算法缩放到目标尺寸
+    return image.scaled(targetWidth, targetHeight, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+}
+
 struct result_i2t { //image to text result, 傻瓜式expected
     enum errcode {
         success,

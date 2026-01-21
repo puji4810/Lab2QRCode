@@ -39,6 +39,32 @@ QScrollArea#scrollArea {
     border: 1px solid #ccc;
 }
 
+/* 配置区域容器 */
+QWidget#configWidget {
+    background-color: #fafafa;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+}
+
+/* 配置标签 */
+QLabel#configLabel {
+    color: #555;
+    font-weight: 500;
+}
+
+/* 配置输入框 */
+QLineEdit#configInput {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 5px 8px;
+    background-color: white;
+}
+
+QLineEdit#configInput:focus {
+    border-color: #4CAF50;
+    background-color: white;
+}
+
 /* 宽度和高度输入框 */
 QLineEdit#widthInput,
 QLineEdit#heightInput {

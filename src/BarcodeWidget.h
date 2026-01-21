@@ -8,6 +8,7 @@
 #include <qfuturewatcher.h>
 
 #include "CameraWidget.h"
+#include "components/ImageSizeConfig.h"
 #include "convert.h"
 #include "mqtt/MQTTMessageWidget.h"
 #include "mqtt/mqtt_client.h"
@@ -138,6 +139,16 @@ private:
      */
     void changeEvent(QEvent *event) override;
 
+    /**
+     * @brief 保存当前图像尺寸配置到配置文件
+     */
+    void saveImageSizeConfig();
+
+    /**
+     * @brief 从UI控件读取并更新图像尺寸配置
+     */
+    void updateImageSizeConfigFromUI();
+
 private:
     QStringList lastSelectedFiles; /**< 上次选择的文件路径列表 */
 
@@ -162,6 +173,8 @@ private:
     QLabel *formatLabel;                                                      /**< 选择条码类型标签 */
     QLabel *widthLabel;                                                       /**< 宽度标签 */
     QLabel *heightLabel;                                                      /**< 高度标签 */
+    QLabel *unitLabel;                                                        /**< 单位标签 */
+    QLabel *ppiLabel;                                                         /**< PPI标签 */
     QProgressBar *progressBar;                                                /**< 异步进度条 */
     std::vector<convert::result_data_entry> lastResults;                      /**< 上次解码结果 */
     QScrollArea *scrollArea;                                                  /**< 滚动区域 */
@@ -169,8 +182,11 @@ private:
     ZXing::BarcodeFormat currentBarcodeFormat = ZXing::BarcodeFormat::QRCode; /**< 当前选择的条码格式 */
     QLineEdit *widthInput;                                                    /**< 图片宽度输入框 */
     QLineEdit *heightInput;                                                   /**< 图片高度输入框 */
+    QComboBox *unitComboBox;                                                  /**< 单位选择框 */
+    QLineEdit *ppiInput;                                                      /**< PPI输入框 */
     QFileDialog *fileDialog;                                                  /**< 文件选择对话框 */
     std::unique_ptr<MqttSubscriber> subscriber_;                              /**< MQTT订阅者实例 */
     std::unique_ptr<MQTTMessageWidget> messageWidget;                         /**< MQTT消息展示窗口 */
     CameraWidget preview;                                                     /**< 摄像头预览窗口 */
+    ImageSizeConfig imageSizeConfig;                                          /**< 图像尺寸配置 */
 };

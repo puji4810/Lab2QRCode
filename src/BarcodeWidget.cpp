@@ -27,6 +27,7 @@
 #include <SimpleBase64.h>
 #include <ZXing/BarcodeFormat.h>
 #include <ZXing/TextUtfEncoding.h>
+#include <algorithm>
 #include <magic_enum/magic_enum.hpp>
 #include <opencv2/opencv.hpp>
 #include <ranges>
@@ -216,42 +217,104 @@ BarcodeWidget::BarcodeWidget(QWidget *parent)
     scrollArea->setMinimumHeight(320);
     mainLayout->addWidget(scrollArea);
 
-    auto *comboBoxLayout = new QHBoxLayout();
+    // 创建参数配置区域容器
+    QWidget *configWidget = new QWidget(this);
+    configWidget->setObjectName("configWidget");
+    QVBoxLayout *configMainLayout = new QVBoxLayout(configWidget);
+    configMainLayout->setContentsMargins(20, 12, 20, 12);
+    configMainLayout->setSpacing(10);
+
+    // 加载图像尺寸配置
+    imageSizeConfig = ImageSizeConfig::loadFromConfig("./setting/config.json");
+
+    // 第一行：条码类型
+    auto *formatLayout = new QHBoxLayout();
+    formatLayout->setSpacing(10);
+
+    formatLabel = new QLabel(tr("选择条码类型:"), this);
+    formatLabel->setObjectName("configLabel");
+    formatLabel->setFont(Ui::getAppFont(12));
 
     QComboBox *formatComboBox = new QComboBox(this);
-    formatComboBox->setFont(Ui::getAppFont(13));
-
+    formatComboBox->setFont(Ui::getAppFont(11));
+    formatComboBox->setFixedWidth(100);
     for (const auto &item : qAsConst(barcodeFormats)) {
         formatComboBox->addItem(item);
     }
     formatComboBox->setCurrentText("QRCode");
 
-    formatLabel = new QLabel(tr("选择条码类型:"), this);
-    formatLabel->setFont(Ui::getAppFont(14));
-    comboBoxLayout->addWidget(formatLabel);
-    comboBoxLayout->addWidget(formatComboBox);
-    mainLayout->addLayout(comboBoxLayout);
+    formatLayout->addWidget(formatLabel);
+    formatLayout->addWidget(formatComboBox);
+    formatLayout->addStretch();
+    configMainLayout->addLayout(formatLayout);
 
-    auto *sizeLayout = new QHBoxLayout();
+    // 第二行：宽度和高度
+    auto *row2Layout = new QHBoxLayout();
+    row2Layout->setSpacing(10);
 
     widthLabel = new QLabel(tr("宽度:"), this);
+    widthLabel->setObjectName("configLabel");
+    widthLabel->setFont(Ui::getAppFont(12));
+
     widthInput = new QLineEdit(this);
-    widthInput->setObjectName("widthInput");
-    widthInput->setText("300"); // 默认宽度
-    widthInput->setFont(Ui::getAppFont(13));
+    widthInput->setObjectName("configInput");
+    widthInput->setText(QString::number(imageSizeConfig.width));
+    widthInput->setFont(Ui::getAppFont(11));
+    widthInput->setFixedWidth(70);
 
     heightLabel = new QLabel(tr("高度:"), this);
+    heightLabel->setObjectName("configLabel");
+    heightLabel->setFont(Ui::getAppFont(12));
+
     heightInput = new QLineEdit(this);
-    heightInput->setObjectName("heightInput");
-    heightInput->setText("300"); // 默认高度
-    heightInput->setFont(Ui::getAppFont(13));
+    heightInput->setObjectName("configInput");
+    heightInput->setText(QString::number(imageSizeConfig.height));
+    heightInput->setFont(Ui::getAppFont(11));
+    heightInput->setFixedWidth(70);
 
-    sizeLayout->addWidget(widthLabel);
-    sizeLayout->addWidget(widthInput);
-    sizeLayout->addWidget(heightLabel);
-    sizeLayout->addWidget(heightInput);
+    row2Layout->addWidget(widthLabel);
+    row2Layout->addWidget(widthInput);
+    row2Layout->addStretch();
+    row2Layout->addWidget(heightLabel);
+    row2Layout->addWidget(heightInput);
 
-    mainLayout->addLayout(sizeLayout);
+    configMainLayout->addLayout(row2Layout);
+
+    // 第三行：单位和PPI
+    auto *row3Layout = new QHBoxLayout();
+    row3Layout->setSpacing(10);
+
+    unitLabel = new QLabel(tr("单位:"), this);
+    unitLabel->setObjectName("configLabel");
+    unitLabel->setFont(Ui::getAppFont(12));
+
+    unitComboBox = new QComboBox(this);
+    unitComboBox->addItem(tr("像素"), static_cast<int>(SizeUnit::Pixel));
+    unitComboBox->addItem(tr("厘米"), static_cast<int>(SizeUnit::Centimeter));
+    unitComboBox->setCurrentIndex(imageSizeConfig.unit == SizeUnit::Pixel ? 0 : 1);
+    unitComboBox->setFont(Ui::getAppFont(11));
+    unitComboBox->setFixedWidth(70);
+
+    ppiLabel = new QLabel(tr("PPI:"), this);
+    ppiLabel->setObjectName("configLabel");
+    ppiLabel->setFont(Ui::getAppFont(12));
+
+    ppiInput = new QLineEdit(this);
+    ppiInput->setObjectName("configInput");
+    ppiInput->setText(QString::number(imageSizeConfig.ppi));
+    ppiInput->setFont(Ui::getAppFont(11));
+    ppiInput->setFixedWidth(70);
+    ppiInput->setToolTip(tr("每英寸像素数（用于厘米到像素的转换）"));
+
+    row3Layout->addWidget(unitLabel);
+    row3Layout->addWidget(unitComboBox);
+    row3Layout->addStretch();
+    row3Layout->addWidget(ppiLabel);
+    row3Layout->addWidget(ppiInput);
+
+    configMainLayout->addLayout(row3Layout);
+
+    mainLayout->addWidget(configWidget);
 
     fileDialog = new QFileDialog(this, "Select File", "", "Supported Files (*.rfa *.txt *.png);;All Files (*)");
     fileDialog->setModal(false);
@@ -287,6 +350,14 @@ BarcodeWidget::BarcodeWidget(QWidget *parent)
         // 设置当前选择的条码格式
         currentBarcodeFormat = stringToBarcodeFormat(barcodeFormats[index]);
     });
+
+    // 连接尺寸配置控件的信号，用于保存配置
+    connect(widthInput, &QLineEdit::editingFinished, this, &BarcodeWidget::saveImageSizeConfig);
+    connect(heightInput, &QLineEdit::editingFinished, this, &BarcodeWidget::saveImageSizeConfig);
+    connect(
+        unitComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BarcodeWidget::saveImageSizeConfig);
+    connect(ppiInput, &QLineEdit::editingFinished, this, &BarcodeWidget::saveImageSizeConfig);
+
     connect(this, &BarcodeWidget::mqttMessageReceived, this, [this](const QString &topic, const QByteArray &payload) {
         // 记录收到的消息
         spdlog::info("MQTT Received: topic={}, payload={}", topic.toStdString(), payload.toStdString());
@@ -393,8 +464,14 @@ void BarcodeWidget::onBrowseFile() const {
 }
 
 void BarcodeWidget::onGenerateClicked() {
-    const auto reqWidth = widthInput->text().toInt();
-    const auto reqHeight = heightInput->text().toInt();
+    // 更新配置
+    updateImageSizeConfigFromUI();
+
+    // 获取目标像素尺寸
+    const auto targetWidth = imageSizeConfig.getTargetWidthPixels();
+    const auto targetHeight = imageSizeConfig.getTargetHeightPixels();
+    const auto targePPI = imageSizeConfig.ppi;
+
     const auto useBase64 = base64CheckAcion->isChecked();
     const auto format = currentBarcodeFormat;
 
@@ -423,6 +500,9 @@ void BarcodeWidget::onGenerateClicked() {
 
             bool useBase64;
             convert::QRcode_create_config config;
+            int finalWidth;  // 最终目标宽度
+            int finalHeight; // 最终目标高度
+            int targePPI;
 
             convert::result_data_entry operator()(const QString &textInput) const {
                 convert::result_data_entry res;
@@ -442,8 +522,21 @@ void BarcodeWidget::onGenerateClicked() {
                     }
 
                     auto img = convert::byte_to_QRCode_qimage(content, config);
+                    spdlog::info("生成二维码图片，尺寸: {}x{}", img.width(), img.height());
+                    spdlog::info("参数宽高: {}x{}", finalWidth, finalWidth);
 
                     if (!img.isNull()) {
+                        // 缩放图像到精确尺寸
+                        img = convert::resizeImageToExactSize(img, finalWidth, finalHeight);
+
+                        int ppi = targePPI;
+                        int dpm = static_cast<int>(ppi / 0.0254);
+                        img.setDotsPerMeterX(dpm);
+                        img.setDotsPerMeterY(dpm);
+
+                        spdlog::info(
+                            "缩放后图片尺寸: {}x{}, 设置密度: {} DPI ({} DPM)", img.width(), img.height(), ppi, dpm);
+
                         res.data = img;
                         // 图片设置到剪贴板当中
                         QImage copyImg = img;
@@ -475,9 +568,11 @@ void BarcodeWidget::onGenerateClicked() {
         });
 
         // 启动异步任务
-        watcher->setFuture(QtConcurrent::mapped(inputs,
-                                                TextWorker{
-                                                    useBase64, {reqWidth, reqHeight, format}
+        watcher->setFuture(QtConcurrent::mapped(
+            inputs,
+            TextWorker{
+                useBase64, {targetWidth, targetHeight, format},
+                 targetWidth, targetHeight, targePPI
         }));
 
         return; // 结束函数，不再执行下方的文件处理逻辑
@@ -508,6 +603,8 @@ void BarcodeWidget::onGenerateClicked() {
         using result_type = convert::result_data_entry;
         int reqWidth;
         int reqHeight;
+        int finalWidth;  // 最终目标宽度
+        int finalHeight; // 最终目标高度
         bool useBase64;
         ZXing::BarcodeFormat format;
 
@@ -539,6 +636,8 @@ void BarcodeWidget::onGenerateClicked() {
                     text, {.target_width = reqWidth, .target_height = reqHeight, .format = format, .margin = 1});
 
                 if (!img.isNull()) {
+                    // 缩放图像到精确尺寸
+                    img = convert::resizeImageToExactSize(img, finalWidth, finalHeight);
                     res.data = img;
                 } else {
                     res.data = QString(tr("生成图片失败")).toStdString();
@@ -564,7 +663,8 @@ void BarcodeWidget::onGenerateClicked() {
     connect(
         watcher, &QFutureWatcher<convert::result_data_entry>::finished, [this, watcher] { onBatchFinish(*watcher); });
 
-    watcher->setFuture(QtConcurrent::mapped(filePaths, worker{reqWidth, reqHeight, useBase64, format}));
+    watcher->setFuture(QtConcurrent::mapped(
+        filePaths, worker{targetWidth, targetHeight, targetWidth, targetHeight, useBase64, format}));
 }
 
 void BarcodeWidget::onDecodeToChemFileClicked() {
@@ -1186,6 +1286,9 @@ void BarcodeWidget::retranslate() {
     formatLabel->setText(tr("选择条码类型:"));
     widthLabel->setText(tr("宽度:"));
     heightLabel->setText(tr("高度:"));
+    unitLabel->setText(tr("单位:"));
+    ppiLabel->setText(tr("PPI:"));
+    ppiInput->setToolTip(tr("每英寸像素数（用于厘米到像素的转换）"));
     // 调用该函数触发正确的显示
     renderResults();
 }
@@ -1204,3 +1307,25 @@ const QStringList BarcodeWidget::barcodeFormats = [] {
     }
     return list;
 }();
+
+void BarcodeWidget::updateImageSizeConfigFromUI() {
+    // 从UI控件读取配置
+    imageSizeConfig.width = widthInput->text().toDouble();
+    imageSizeConfig.height = heightInput->text().toDouble();
+    imageSizeConfig.unit = static_cast<SizeUnit>(unitComboBox->currentData().toInt());
+    imageSizeConfig.ppi = ppiInput->text().toInt();
+
+    // 确保PPI合理范围（72-600）
+    if (imageSizeConfig.ppi < 72) {
+        imageSizeConfig.ppi = 72;
+        ppiInput->setText("72");
+    } else if (imageSizeConfig.ppi > 600) {
+        imageSizeConfig.ppi = 600;
+        ppiInput->setText("600");
+    }
+}
+
+void BarcodeWidget::saveImageSizeConfig() {
+    updateImageSizeConfigFromUI();
+    ImageSizeConfig::saveToConfig("./setting/config.json", imageSizeConfig);
+}

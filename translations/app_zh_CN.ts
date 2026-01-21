@@ -77,195 +77,223 @@
 <context>
     <name>BarcodeWidget</name>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="123"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1154"/>
+        <location filename="../src/BarcodeWidget.cpp" line="126"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1270"/>
         <source>帮助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="124"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1155"/>
+        <location filename="../src/BarcodeWidget.cpp" line="127"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1271"/>
         <source>工具</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="125"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1156"/>
+        <location filename="../src/BarcodeWidget.cpp" line="128"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1272"/>
         <source>设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="130"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1158"/>
+        <location filename="../src/BarcodeWidget.cpp" line="133"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1274"/>
         <source>关于软件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="131"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1159"/>
+        <location filename="../src/BarcodeWidget.cpp" line="134"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1275"/>
         <source>MQTT实时消息监控窗口</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="132"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1160"/>
+        <location filename="../src/BarcodeWidget.cpp" line="135"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1276"/>
         <source>打开摄像头扫码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="134"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1161"/>
+        <location filename="../src/BarcodeWidget.cpp" line="137"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1277"/>
         <source>Base64</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="138"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1162"/>
+        <location filename="../src/BarcodeWidget.cpp" line="141"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1278"/>
         <source>文本输入</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="166"/>
-        <location filename="../src/BarcodeWidget.cpp" line="329"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1163"/>
+        <location filename="../src/BarcodeWidget.cpp" line="169"/>
+        <location filename="../src/BarcodeWidget.cpp" line="402"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1279"/>
         <source>选择一个文件或图片</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="169"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1164"/>
+        <location filename="../src/BarcodeWidget.cpp" line="172"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1280"/>
         <source>浏览</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="179"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1165"/>
+        <location filename="../src/BarcodeWidget.cpp" line="182"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1281"/>
         <source>生成</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="180"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1166"/>
+        <location filename="../src/BarcodeWidget.cpp" line="183"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1282"/>
         <source>解码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="181"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1167"/>
+        <location filename="../src/BarcodeWidget.cpp" line="184"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1283"/>
         <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="189"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1168"/>
+        <location filename="../src/BarcodeWidget.cpp" line="192"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1284"/>
         <source>请选择任意文件来生成条码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="190"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1169"/>
+        <location filename="../src/BarcodeWidget.cpp" line="193"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1285"/>
         <source>可以解码PNG图片中的条码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="227"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1170"/>
+        <location filename="../src/BarcodeWidget.cpp" line="234"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1286"/>
         <source>选择条码类型:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="235"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1171"/>
+        <location filename="../src/BarcodeWidget.cpp" line="255"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1287"/>
         <source>宽度:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="241"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1172"/>
+        <location filename="../src/BarcodeWidget.cpp" line="265"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1288"/>
         <source>高度:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="326"/>
+        <location filename="../src/BarcodeWidget.cpp" line="287"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1289"/>
+        <source>单位:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/BarcodeWidget.cpp" line="292"/>
+        <source>像素</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/BarcodeWidget.cpp" line="293"/>
+        <source>厘米</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/BarcodeWidget.cpp" line="298"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1290"/>
+        <source>PPI:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/BarcodeWidget.cpp" line="307"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1291"/>
+        <source>每英寸像素数（用于厘米到像素的转换）</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/BarcodeWidget.cpp" line="399"/>
         <source>输入要转换的文字</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="389"/>
+        <location filename="../src/BarcodeWidget.cpp" line="462"/>
         <source>选择需要转换的文件或图片</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="447"/>
-        <location filename="../src/BarcodeWidget.cpp" line="526"/>
+        <location filename="../src/BarcodeWidget.cpp" line="558"/>
+        <location filename="../src/BarcodeWidget.cpp" line="643"/>
         <source>生成图片失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="477"/>
-        <location filename="../src/BarcodeWidget.cpp" line="555"/>
-        <location filename="../src/BarcodeWidget.cpp" line="613"/>
+        <location filename="../src/BarcodeWidget.cpp" line="590"/>
+        <location filename="../src/BarcodeWidget.cpp" line="673"/>
+        <location filename="../src/BarcodeWidget.cpp" line="731"/>
         <source>警告</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="477"/>
-        <location filename="../src/BarcodeWidget.cpp" line="555"/>
+        <location filename="../src/BarcodeWidget.cpp" line="590"/>
+        <location filename="../src/BarcodeWidget.cpp" line="673"/>
         <source>无可处理文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="502"/>
+        <location filename="../src/BarcodeWidget.cpp" line="617"/>
         <source>无法打开文件: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="578"/>
+        <location filename="../src/BarcodeWidget.cpp" line="696"/>
         <source>无法加载图片文件: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="580"/>
+        <location filename="../src/BarcodeWidget.cpp" line="698"/>
         <source>无法识别条码或条码格式不正确</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="613"/>
+        <location filename="../src/BarcodeWidget.cpp" line="731"/>
         <source>没有可保存的内容。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="643"/>
+        <location filename="../src/BarcodeWidget.cpp" line="761"/>
         <source>保存图片</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="647"/>
+        <location filename="../src/BarcodeWidget.cpp" line="765"/>
         <source>保存文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="658"/>
+        <location filename="../src/BarcodeWidget.cpp" line="776"/>
         <source>请选择保存文件夹</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="753"/>
+        <location filename="../src/BarcodeWidget.cpp" line="871"/>
         <source>数据为空或无效</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="754"/>
+        <location filename="../src/BarcodeWidget.cpp" line="872"/>
         <source>写入失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="755"/>
+        <location filename="../src/BarcodeWidget.cpp" line="873"/>
         <source>未知错误</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="762"/>
+        <location filename="../src/BarcodeWidget.cpp" line="880"/>
         <source>操作完成。
 总计处理: %1
 成功: %2
@@ -273,7 +301,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="768"/>
+        <location filename="../src/BarcodeWidget.cpp" line="886"/>
         <source>
 
 [保存失败的文件]:
@@ -281,17 +309,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="775"/>
+        <location filename="../src/BarcodeWidget.cpp" line="893"/>
         <source>...以及其他 %1 个文件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="777"/>
+        <location filename="../src/BarcodeWidget.cpp" line="895"/>
         <source>保存结果 - 包含错误</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="781"/>
+        <location filename="../src/BarcodeWidget.cpp" line="899"/>
         <source>
 
 [文件列表]:
@@ -299,46 +327,46 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="783"/>
+        <location filename="../src/BarcodeWidget.cpp" line="901"/>
         <source>保存成功</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="829"/>
+        <location filename="../src/BarcodeWidget.cpp" line="947"/>
         <source>当前模式：直接文本生成
 请输入内容并点击生成</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="845"/>
+        <location filename="../src/BarcodeWidget.cpp" line="963"/>
         <source>已选择 %1 个文件，准备处理:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="891"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1009"/>
         <source>[待解码]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="894"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1012"/>
         <source>[待生成]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="897"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1015"/>
         <source>[不确定类型，默认待生成]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="196"/>
-        <location filename="../src/BarcodeWidget.cpp" line="914"/>
+        <location filename="../src/BarcodeWidget.cpp" line="199"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1032"/>
         <source>请选择文件
 或者键入内容</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/BarcodeWidget.cpp" line="126"/>
-        <location filename="../src/BarcodeWidget.cpp" line="1157"/>
+        <location filename="../src/BarcodeWidget.cpp" line="129"/>
+        <location filename="../src/BarcodeWidget.cpp" line="1273"/>
         <source>语言</source>
         <translation type="unfinished"></translation>
     </message>
@@ -347,107 +375,107 @@
     <name>CameraWidget</name>
     <message>
         <location filename="../src/CameraWidget.cpp" line="226"/>
-        <location filename="../src/CameraWidget.cpp" line="871"/>
+        <location filename="../src/CameraWidget.cpp" line="894"/>
         <source>摄像头预览</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="233"/>
-        <location filename="../src/CameraWidget.cpp" line="872"/>
+        <location filename="../src/CameraWidget.cpp" line="895"/>
         <source>摄像头</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="236"/>
-        <location filename="../src/CameraWidget.cpp" line="873"/>
+        <location filename="../src/CameraWidget.cpp" line="896"/>
         <source>显示设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="242"/>
-        <location filename="../src/CameraWidget.cpp" line="874"/>
+        <location filename="../src/CameraWidget.cpp" line="897"/>
         <source>二维码类型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="245"/>
-        <location filename="../src/CameraWidget.cpp" line="875"/>
+        <location filename="../src/CameraWidget.cpp" line="898"/>
         <source>全选</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="249"/>
-        <location filename="../src/CameraWidget.cpp" line="876"/>
+        <location filename="../src/CameraWidget.cpp" line="899"/>
         <source>清空</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="320"/>
-        <location filename="../src/CameraWidget.cpp" line="877"/>
+        <location filename="../src/CameraWidget.cpp" line="900"/>
         <source>后处理</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="322"/>
-        <location filename="../src/CameraWidget.cpp" line="878"/>
+        <location filename="../src/CameraWidget.cpp" line="901"/>
         <source>图像增强</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="329"/>
-        <location filename="../src/CameraWidget.cpp" line="879"/>
+        <location filename="../src/CameraWidget.cpp" line="902"/>
         <source>调试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="330"/>
-        <location filename="../src/CameraWidget.cpp" line="880"/>
+        <location filename="../src/CameraWidget.cpp" line="903"/>
         <source>保存识别帧</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="344"/>
-        <location filename="../src/CameraWidget.cpp" line="773"/>
-        <location filename="../src/CameraWidget.cpp" line="882"/>
+        <location filename="../src/CameraWidget.cpp" line="796"/>
+        <location filename="../src/CameraWidget.cpp" line="905"/>
         <source>时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="345"/>
-        <location filename="../src/CameraWidget.cpp" line="774"/>
-        <location filename="../src/CameraWidget.cpp" line="883"/>
+        <location filename="../src/CameraWidget.cpp" line="797"/>
+        <location filename="../src/CameraWidget.cpp" line="906"/>
         <source>图像</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="346"/>
-        <location filename="../src/CameraWidget.cpp" line="775"/>
-        <location filename="../src/CameraWidget.cpp" line="884"/>
+        <location filename="../src/CameraWidget.cpp" line="798"/>
+        <location filename="../src/CameraWidget.cpp" line="907"/>
         <source>类型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="347"/>
-        <location filename="../src/CameraWidget.cpp" line="776"/>
-        <location filename="../src/CameraWidget.cpp" line="885"/>
+        <location filename="../src/CameraWidget.cpp" line="799"/>
+        <location filename="../src/CameraWidget.cpp" line="908"/>
         <source>内容</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="348"/>
-        <location filename="../src/CameraWidget.cpp" line="886"/>
+        <location filename="../src/CameraWidget.cpp" line="909"/>
         <source>[隐藏] PNG 数据</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="349"/>
-        <location filename="../src/CameraWidget.cpp" line="887"/>
+        <location filename="../src/CameraWidget.cpp" line="910"/>
         <source>[隐藏] 图片宽度</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="350"/>
-        <location filename="../src/CameraWidget.cpp" line="888"/>
+        <location filename="../src/CameraWidget.cpp" line="911"/>
         <source>[隐藏] 图片高度</source>
         <translation type="unfinished"></translation>
     </message>
@@ -468,25 +496,25 @@
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="413"/>
-        <location filename="../src/CameraWidget.cpp" line="890"/>
+        <location filename="../src/CameraWidget.cpp" line="913"/>
         <source>摄像头就绪...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="439"/>
-        <location filename="../src/CameraWidget.cpp" line="891"/>
+        <location filename="../src/CameraWidget.cpp" line="914"/>
         <source>导出</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="441"/>
-        <location filename="../src/CameraWidget.cpp" line="892"/>
+        <location filename="../src/CameraWidget.cpp" line="915"/>
         <source>导出 HTML (.html)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/CameraWidget.cpp" line="442"/>
-        <location filename="../src/CameraWidget.cpp" line="893"/>
+        <location filename="../src/CameraWidget.cpp" line="916"/>
         <source>导出 XLSX (.xlsx)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -547,42 +575,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="561"/>
+        <location filename="../src/CameraWidget.cpp" line="570"/>
         <source>错误</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="561"/>
+        <location filename="../src/CameraWidget.cpp" line="570"/>
         <source>无法打开摄像头</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="590"/>
+        <location filename="../src/CameraWidget.cpp" line="610"/>
         <source>摄像头已启动</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="616"/>
+        <location filename="../src/CameraWidget.cpp" line="639"/>
         <source>摄像头已停止</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="623"/>
+        <location filename="../src/CameraWidget.cpp" line="646"/>
         <source>摄像头运行中...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="626"/>
+        <location filename="../src/CameraWidget.cpp" line="649"/>
         <source>检测到 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="626"/>
+        <location filename="../src/CameraWidget.cpp" line="649"/>
         <source> 码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="631"/>
+        <location filename="../src/CameraWidget.cpp" line="654"/>
         <source>条码类型: %1
 内容: %2
 时间: %3
@@ -591,7 +619,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CameraWidget.cpp" line="766"/>
+        <location filename="../src/CameraWidget.cpp" line="789"/>
         <source>扫描结果</source>
         <translation type="unfinished"></translation>
     </message>
