@@ -233,7 +233,7 @@ BarcodeWidget::BarcodeWidget(QWidget *parent)
 
     QComboBox *formatComboBox = new QComboBox(this);
     formatComboBox->setFont(Ui::getAppFont(11));
-    formatComboBox->setFixedWidth(120);
+    formatComboBox->setFixedWidth(180);
     for (const auto &item : qAsConst(barcodeFormats)) {
         formatComboBox->addItem(item);
     }
