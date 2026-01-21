@@ -6,10 +6,12 @@
 #include "convert.h"
 #include "version_info/version.h"
 #include <QCheckBox>
+#include <QClipboard>
 #include <QComboBox>
 #include <QFileDialog>
 #include <QFont>
 #include <QFutureWatcher>
+#include <QGuiApplication>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -443,6 +445,22 @@ void BarcodeWidget::onGenerateClicked() {
 
                     if (!img.isNull()) {
                         res.data = img;
+                        // 图片设置到剪贴板当中
+                        QImage copyImg = img;
+
+                        // 将剪贴板操作派发到主线程执行
+                        QMetaObject::invokeMethod(
+                            QGuiApplication::instance(),
+                            [copyImg]() {
+                                QClipboard *clipboard = QGuiApplication::clipboard();
+                                clipboard->setImage(copyImg);
+
+                                // 在主线程内验证
+                                if (!clipboard->image().isNull()) {
+                                    spdlog::info("主线程：剪贴板图片设置成功");
+                                }
+                            },
+                            Qt::BlockingQueuedConnection);
                     } else {
                         res.data = QString(tr("生成图片失败")).toStdString();
                     }
