@@ -605,6 +605,7 @@ void BarcodeWidget::onGenerateClicked() {
         int reqHeight;
         int finalWidth;  // 最终目标宽度
         int finalHeight; // 最终目标高度
+        int targePPI;    // 目标PPI用于设置DPM
         bool useBase64;
         ZXing::BarcodeFormat format;
 
@@ -638,6 +639,13 @@ void BarcodeWidget::onGenerateClicked() {
                 if (!img.isNull()) {
                     // 缩放图像到精确尺寸
                     img = convert::resizeImageToExactSize(img, finalWidth, finalHeight);
+
+                    // 设置图像DPI/DPM元数据
+                    int ppi = targePPI;
+                    int dpm = static_cast<int>(ppi / 0.0254);
+                    img.setDotsPerMeterX(dpm);
+                    img.setDotsPerMeterY(dpm);
+
                     res.data = img;
                 } else {
                     res.data = QString(tr("生成图片失败")).toStdString();
@@ -664,7 +672,7 @@ void BarcodeWidget::onGenerateClicked() {
         watcher, &QFutureWatcher<convert::result_data_entry>::finished, [this, watcher] { onBatchFinish(*watcher); });
 
     watcher->setFuture(QtConcurrent::mapped(
-        filePaths, worker{targetWidth, targetHeight, targetWidth, targetHeight, useBase64, format}));
+        filePaths, worker{targetWidth, targetHeight, targetWidth, targetHeight, targePPI, useBase64, format}));
 }
 
 void BarcodeWidget::onDecodeToChemFileClicked() {
